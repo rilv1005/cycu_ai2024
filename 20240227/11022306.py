@@ -18,6 +18,7 @@ for title, content in entries:
         with open("C:/Users/11022306/Desktop/11022306.csv", "a", encoding="utf-8") as f:
             f.write(f"{title},{content}\n")
     
+    
 
 
 
