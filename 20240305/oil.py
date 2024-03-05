@@ -47,8 +47,9 @@ for i in range(1, len(df2.columns)):
     plt.plot(df2.iloc[:, 0], df2.iloc[:, i], label=df2.columns[i])
 plt.legend(prop=myfont)
 plt.show()
-# 儲存圖表到桌面
+#將圖表轉為圖片 並儲存到桌面
 plt.savefig('C:/Users/USER/Desktop/oil.png')
+
 
 
 
