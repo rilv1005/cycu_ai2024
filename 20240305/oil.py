@@ -33,11 +33,22 @@ df = df.iloc[:, :6]
 # 去除值是NaN的資料
 df = df.dropna()
 
-# 把第一欄的資料型態
+# 尋找所有包含日期和時間的欄位
+date_cols = [col for col in df.columns if df[col].dtype == 'datetime64[ns]']
 
-# 把第一欄的資料型態 轉成 yyyy-mm-dd
-df[df.columns[0]] = df[df.columns[0]].str.replace('年', '-').str.replace('月', '-').str.replace('日', '')
+# 將所有日期和時間的欄位的格式更改為只有日期
+for col in date_cols:
+    df[col] = df[col].dt.strftime('%Y/%m/%d')
+
+# 再次將日期欄位的資料型態轉換為 datetime，但這次只包含日期
+for col in date_cols:
+    df[col] = pd.to_datetime(df[col])
+    
+# 把第一欄的資料型態轉換為 datetime
 df[df.columns[0]] = pd.to_datetime(df[df.columns[0]])
+
+
+
 
 
 #繪製折線圖
