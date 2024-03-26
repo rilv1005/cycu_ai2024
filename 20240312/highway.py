@@ -2,6 +2,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+# 在您的工作區中創建一個新的 Jupyter Notebook
+
+
 # 讀取 CSV 文件
 df = pd.read_csv('/workspaces/cycu_ai2024/20240312/112年1-10月交通事故簡訊通報資料.csv')
 
