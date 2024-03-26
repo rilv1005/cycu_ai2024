@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # 讀取 CSV 文件
-df = pd.read_csv('C:\\Users\\User\\Desktop\\0312\\cycu_ai2024\\20240312\\112年1-10月交通事故簡訊通報資料.csv')
+df = pd.read_csv('/workspaces/cycu_ai2024/20240312/112年1-10月交通事故簡訊通報資料.csv')
 
 #找尋國道名稱為國道1號的資料
 df1 = df[df['國道名稱'] == '國道3號']

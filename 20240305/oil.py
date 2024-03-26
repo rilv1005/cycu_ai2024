@@ -25,7 +25,7 @@ df = pd.concat([df1, df2])
 df.reset_index(drop=True, inplace=True)
 
 # 儲存到 CSV 檔案
-df.to_csv('C:/Users/USER/Desktop/oil2.csv', encoding='utf_8_sig')
+df.to_csv('/workspaces/cycu_ai2024/20240305', encoding='utf_8_sig')
 
 
 # 只保留前6個欄位的資料
