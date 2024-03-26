@@ -30,14 +30,15 @@ def download_files(url, folder_path):
 # 使用範例
 #download_files("https://tisvcloud.freeway.gov.tw/history/TDCS/M04A/20240325/", "TDCS_M04A_20240325")
 
-
-
 import pandas as pd
 import glob
 
 # 找到所有的 csv 檔案
-csv_files = glob.glob('/workspaces/cycu_ai2024/20240326/TDCS_M04A_20240325/00/*.csv')
+csv_files = glob.glob('/workspaces/cycu_ai2024/20240326/TDCS_M04A_20240325')
 
+# 讀取所有的 csv 檔案並將它們合併成一個 DataFrame
+df_list = [pd.read_csv(file) for file in csv_files]
+combined_df = pd.concat(df_list, ignore_index=True)
 
 # 將合併後的 DataFrame 儲存為一個 csv 檔案
-combined_df.to_csv('/workspaces/cycu_ai2024/20240326/TDCS_M04A_20240325/TDCS_M04A_20240325_00.csv', index=False)
+combined_df.to_csv('/workspaces/cycu_ai2024/20240326/TDCS_M04A_20240325.csv', index=False)
