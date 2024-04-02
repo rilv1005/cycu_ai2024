@@ -1,11 +1,18 @@
 import feedparser
 import requests
 from bs4 import BeautifulSoup
+import re
 
-def get_city_names(rss_url):
+def get_city_temperature(rss_url):
     feed = feedparser.parse(rss_url)
-    city_names = [entry.title for entry in feed.entries]
-    return city_names
+    city_temperature = {}
+    for entry in feed.entries:
+        match = re.search(r'^(.{2,3}[縣市]).+溫度: (\d+ ~ \d+)', entry.title)
+        if match:
+            city = match.group(1)
+            temperature = match.group(2)
+            city_temperature[city] = temperature
+    return city_temperature
 
 def get_rss_links(url):
     response = requests.get(url)
@@ -16,9 +23,7 @@ def get_rss_links(url):
 url = "https://www.cwa.gov.tw/V8/C/S/eservice/rss.html"
 rss_links = get_rss_links(url)
 for link in rss_links:
-    
     rss_url = "https://www.cwa.gov.tw"+link
-    city_names = get_city_names(rss_url)
-    for name in city_names:
-        print(name)
-    print("====================================")
+    city_temperature = get_city_temperature(rss_url)
+    for city, temperature in city_temperature.items():
+        print(f"縣市名稱: {city}, 溫度: {temperature}")
