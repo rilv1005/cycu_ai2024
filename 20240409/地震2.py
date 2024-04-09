@@ -4,7 +4,7 @@ from folium.plugins import TimestampedGeoJson
 import json
 
 # 讀取 csv 文件
-df = pd.read_csv(r'C:\Users\User\Desktop\0904\cycu_ai2024\20240409\地震活動彙整_638482861122440915.csv', encoding='big5')
+df = pd.read_csv(r'C:\Users\User\Desktop\0904\cycu_ai2024\20240409\地震活動彙整.csv', encoding='big5')
 
 # 將數據轉換為 GeoJSON 格式
 data = []
