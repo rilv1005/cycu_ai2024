@@ -1,3 +1,4 @@
+#https://scweb.cwa.gov.tw/zh-tw/earthquake/data/
 import requests
 from bs4 import BeautifulSoup
 import folium
@@ -14,8 +15,6 @@ earthquakes = soup.find_all('tr')[1:]  # 第一個 tr 是表頭，所以我們�
 # 創建一個地圖
 m = folium.Map(location=[23.5, 121], zoom_start=7)
 
-# ...
-
 # 在地圖上繪製地震資訊
 for earthquake in earthquakes:
     tds = earthquake.find_all('td')
@@ -24,19 +23,13 @@ for earthquake in earthquakes:
 
     # 獲取地震的時間、緯度、經度和規模
     time = datetime.strptime(tds[0].text, '%Y-%m-%d %H:%M:%S')
-    if time < datetime(2022, 4, 3, 7, 58):
-        continue
     lat = float(tds[4].text)
     lon = float(tds[5].text)
     magnitude = float(tds[1].text)
 
-    # ...
-
     # 根據規模設置圓形的大小和顏色
     radius = magnitude * 2
     color = 'red' if magnitude >= 5 else 'blue'
-
-    print(f'Time: {time}, Lat: {lat}, Lon: {lon}, Magnitude: {magnitude}')
 
     # 在地圖上繪製一個圓形
     folium.CircleMarker([lat, lon], radius=radius, color=color, fill=True, fill_color=color).add_to(m)
