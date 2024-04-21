@@ -3,7 +3,7 @@ import pandas as pd
 import folium
 
 # 讀取 csv 文件
-df = pd.read_csv(r'C:\Users\User\Desktop\0904\cycu_ai2024\20240409\地震活動彙整.csv', encoding='big5')
+df = pd.read_csv(r'C:\Users\User\Desktop\homework\Github\cycu_ai2024\20240409\地震活動彙整.csv', encoding='big5')
 
 # 提取經度和緯度
 locations = df[['緯度', '經度']]
@@ -20,4 +20,4 @@ for index, row in df.iterrows():
     folium.Marker([row['緯度'], row['經度']], popup=popup).add_to(m)
 
 # 保存地圖
-m.save('earthquake_map.html')
+m.save('earthquake_map1.html')
