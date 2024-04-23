@@ -8,16 +8,18 @@ from sklearn.metrics import accuracy_score
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
+print("加載數據集")
 print(X, y)
 
 # 切分數據集為訓練集和測試集
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
+print("切分數據集為訓練集和測試集")
+print(X_train, X_test, y_train, y_test)
 # 特徵標準化
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
-
+print(X_train, X_test)
 # 創建SVM分類器實例，這裡使用預設的核函數（RBF核）
 model = SVC(kernel='rbf', decision_function_shape='ovo')
 
@@ -26,6 +28,8 @@ model.fit(X_train, y_train)
 
 # 進行預測
 y_pred = model.predict(X_test)
+print("預測結果")
+print(y_pred)
 
 # 計算準確率
 accuracy = accuracy_score(y_test, y_pred)
