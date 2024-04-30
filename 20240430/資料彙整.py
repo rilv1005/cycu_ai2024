@@ -9,8 +9,10 @@ csv_files = glob.glob('/workspaces/cycu_ai2024/20240430/TDCS_M05A/*.csv')
 dfs = []
 for csv_file in csv_files:
     df = pd.read_csv(csv_file, header=None)
-    # 過濾出第二欄位（索引為 1）是以 '01' 開頭的資料，並且第四欄位（索引為 3）是 '31' 的資料
-    filtered_df = df[df[1].str.startswith('01') & (df[3] == '31')]
+    # 過濾出第二欄位（索引為 1）是以 '01' 開頭的資料
+    filtered_df = df[df[1].str.startswith('01')]
+    # 過濾出第四欄位（索引為 3）是 '31' 的資料
+    filtered_df = filtered_df[filtered_df[3] == 31]
     dfs.append(filtered_df)
 
 # 合併所有的 DataFrame
