@@ -90,8 +90,6 @@ for csv_file in csv_files:
     # 將新的欄位移動到 'GantryFrom' 欄位之後
     df = df[df.columns[:idx+1].tolist() + ['WayIDFrom', 'WayMilageFrom', 'WayDirectionFrom'] + df.columns[idx+1:-3].tolist()]
 
-    # 刪除原本的 'GantryFrom' 欄位
-    df = df.drop(columns=['GantryFrom'])
 
     # 將 'GantryTo' 欄位的資料分割成三個新的欄位
     df['WayIDTo'] = df['GantryTo'].str.slice(0, 3)
@@ -103,9 +101,6 @@ for csv_file in csv_files:
 
     # 將新的欄位移動到 'GantryTo' 欄位之後
     df = df[df.columns[:idx+1].tolist() + ['WayIDTo', 'WayMilageTo', 'WayDirectionTo'] + df.columns[idx+1:-3].tolist()]
-
-    # 刪除原本的 'GantryTo' 欄位
-    df = df.drop(columns=['GantryTo'])
 
     #速度分級處理
     # 定義分級的邊界
