@@ -30,4 +30,7 @@ matrix = list5
 print(matrix)
 
 
+#list6=[[1,1]]
+#list7=[1,1]
+
 
